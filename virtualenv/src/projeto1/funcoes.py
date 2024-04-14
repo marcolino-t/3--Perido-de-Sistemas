@@ -1,4 +1,5 @@
 import requests
+import unicodedata
 
 def lista_Cidades(): #função criada para extrair json() da api
     url = "https://servicodados.ibge.gov.br/api/v1/localidades/distritos" #url que será extraido meu arquivo json
@@ -14,8 +15,10 @@ def sigla(UF): #função criada com parametro
 
 
 def ordenar_cidades(cidades): #função para ordenar
-    nomes_cidades = [] #lista vazia que vai ser adicionada as cidades
-    for cidade in cidades: #Para cada 'cidade' na lista cidades
-        nomes_cidades.append(cidade['nome']) #a lista que está vazia vai adicionar apenas o nome de cada cidade nela
-    nomes_cidades.sort() #a lista que esta apenas com os nomes da cidade usa o metodo sort() para ordenação
-    return nomes_cidades #retorna minha lista
+    nomes_cidades=[]
+    for cidade in cidades:  # Iterar sobre cada cidade na lista de cidades
+        nome = cidade['nome']  # Obter o nome da cidade
+        # Normalizar o nome removendo acentos e caracteres especiais
+        nome_normalizado = unicodedata.normalize('NFKD', nome).encode('ASCII', 'ignore').decode('utf-8')
+        nomes_cidades.append(nome_normalizado)  # Adicionar o nome normalizado à lista de nomes de cidades
+    return nomes_cidades  # Retornar a lista de nomes de cidades normalizados
