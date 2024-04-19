@@ -79,27 +79,39 @@ def merge_sort(inicio, fim, lista):
 # Função de ordenação Bubble Sort
 def bubble_sort(lista):
     n = len(lista)  # Obter o tamanho da lista
+    comparacoes = 0  # Inicializar o contador de comparações
     for i in range(n):  # Loop externo para percorrer toda a lista
         for j in range(0, n-i-1):  # Loop interno para percorrer a lista e comparar os elementos adjacentes
+            comparacoes += 1  # Incrementar o contador de comparações a cada comparação
             if lista[j] > lista[j+1]:  # Trocar os elementos se estiverem fora de ordem
                 lista[j], lista[j+1] = lista[j+1], lista[j]
+    print("Número de comparações no Bubble Sort:", comparacoes)  # Imprimir o número total de comparações
+    return lista
 
 # Função de ordenação Selection Sort
 def selection_sort(lista):
     n = len(lista)  # Obter o tamanho da lista
+    comparacoes = 0  # Inicializar o contador de comparações
     for i in range(n):  # Loop externo para percorrer toda a lista
         min_index = i  # Inicializar o índice do menor elemento como o atual
         for j in range(i+1, n):  # Encontrar o índice do menor elemento restante
+            comparacoes += 1  # Incrementar o contador de comparações a cada comparação
             if lista[j] < lista[min_index]:
                 min_index = j
         lista[i], lista[min_index] = lista[min_index], lista[i]  # Trocar o elemento atual pelo menor elemento encontrado
+    print("Número de comparações no Selection Sort:", comparacoes)  # Imprimir o número total de comparações
+    return lista
 
 # Função de ordenação Insertion Sort
 def insertion_sort(lista):
+    comparacoes = 0  # Inicializar o contador de comparações
     for i in range(1, len(lista)):  # Percorrer a lista a partir do segundo elemento
         chave = lista[i]  # Armazenar o elemento atual em uma variável temporária
         j = i - 1  # Inicializar o índice para comparar com os elementos à esquerda
         while j >= 0 and chave < lista[j]:  # Mover os elementos maiores que a chave para a direita
             lista[j + 1] = lista[j]
             j -= 1
+            comparacoes += 1  # Incrementar o contador de comparações a cada comparação
         lista[j + 1] = chave
+    print("Número de comparações no Insertion Sort:", comparacoes)  # Imprimir o número total de comparações
+    return lista
