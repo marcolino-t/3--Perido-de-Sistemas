@@ -1,0 +1,4 @@
+Eu não soube incrementar corretamente o método de contagem de comparação em dois algoritmos,
+e observei que dois algoritmos tiveram o mesmo número de comparações. Não sei se coloquei o 
+contador na linha errada ou se realmente eles fazem o mesmo número de comparações,
+mas com tempos diferentes.
